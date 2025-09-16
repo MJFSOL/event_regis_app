@@ -1,0 +1,75 @@
+.signup-container {
+  display: flex;
+  height: 100vh;
+  align-items: center;
+  background-color: #f5f5f5;
+}
+.signup-box {
+  position: relative;
+  padding: 10px;
+  display: flex;
+  margin: auto;
+  width: 85%;
+  height: 45rem;
+  border: 1px solid #ccc;
+  border-radius: 13px;
+  background-color: white;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+.signup-left-box {
+  width: 50%;
+  background: url("signin-box.jpg") no-repeat center;
+  background-size: cover;
+  border-radius: 13px;
+  padding: 1rem;
+  background-color: blue;
+}
+.signup-box-heading a{
+    color: white;
+    font-size: 15px;
+    font-weight: 200;
+}
+.signup-right-box {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 50%;
+}
+.signup-form{
+    width: 70%;
+}
+.signup-heading{
+    line-height: 10px;
+}
+.signup-heading h2 {
+  font-size: 40px;
+  font-weight: 500;
+  margin-bottom: 1.5rem;
+}
+.signup-heading p{
+    line-height: 20px;
+    font-size: 16px;
+    color: #585858a2;
+    margin-bottom: 1.5rem;
+}
+.signup-btn{
+    background-color: black;
+    color: white;
+    border: none;
+    padding: 0.7rem 2rem;
+    border-radius: 5px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: 0.3s ease-in-out;
+}
+.signup-btn:hover{
+    background-color: #333;
+}
+.signup-input {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 1.5rem;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
+}

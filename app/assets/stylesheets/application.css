@@ -1,0 +1,161 @@
+/*
+ * This is a manifest file that'll be compiled into application.css.
+ *
+ * With Propshaft, assets are served efficiently without preprocessing steps. You can still include
+ * application-wide styles in this file, but keep in mind that CSS precedence will follow the standard
+ * cascading order, meaning styles declared later in the document or manifest will override earlier ones,
+ * depending on specificity.
+ *
+ * Consider organizing styles into separate files for maintainability.
+ */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+}
+
+body{
+    background: #f5f5f5;
+}
+
+.guest-landing{
+    width: 100%;
+    height: 80vh;
+    background: url('g-bg.jpg') no-repeat center;
+    background-size: cover;
+    position: relative;
+}
+.guest-landing::after {
+    content: "";
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: rgba(0, 0, 0, 0.511); /* Adjust opacity as needed */
+    z-index: 1;
+}
+
+.guest-landing > * {
+    position: relative;
+    z-index: 2;
+}
+
+.guest-nav{
+    padding: 1.5rem;
+    width: 70%;
+    display: flex;
+    align-items: center;
+    margin: auto;
+}
+.logo{
+    width: 50%;
+    text-align: left;
+}
+.logo h1{
+    color: white;
+}
+.left-guest-nav{
+    width: 50%;
+    text-align: right;
+    display: flex;
+    justify-content: flex-end;
+    gap: 1rem;
+}
+
+.left-guest-nav a{
+    color: white;
+    text-decoration: none;
+    font-weight: 500;
+}
+.signin{
+    padding: 0.5rem 1.5rem;
+    transition: 0.3s ease-in-out;
+}
+.signin:hover{
+    border: 0.2px solid white;
+}
+.signup{
+    padding: 0.5rem 1.5rem;
+    border: 0.2px solid white;
+}
+
+.heading{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 41rem;
+    padding: 5vw 2vw; /* Use viewport units for padding */
+    /* background-color: blue; */
+    margin: auto;
+    box-sizing: border-box;
+}
+.heading-description{
+    line-height: 20px;
+}
+.heading-description h1{
+    color: white;
+    font-size: 3vw; /* Responsive font size */
+    margin-bottom: 1rem;
+    font-weight: 300;
+}
+.heading-description p{
+    width: 60%;
+    color: white;
+    font-size: 1.2vw; /* Responsive font size */
+    font-weight: 100;
+    margin-bottom: 3rem;
+}
+
+.get-started{
+    display: inline-block;
+    padding: 0.7rem 2rem;
+    background-color: #ff4c60;
+    border: none;
+    text-decoration: none;
+    color: white;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: 0.3s ease-in-out;
+}
+.get-started:hover{
+    transform: scale(1.05);
+}
+
+.about-section{
+    margin-top: 3rem;
+    width: 100%;
+    height: 30vh;
+
+}
+.about{
+    display: flex;
+    margin: auto;
+    width: 80%;
+    height: 40vh;
+}
+.about-content{
+    padding: 1rem;
+    width: 100%;
+    height: 20rem;
+    /* background-color: blue; */
+}
+.about-content h1{
+    margin-bottom: 0.5rem;
+}
+
+
+/* Responsive adjustments for smaller screens */
+@media (max-width: 600px) {
+    .heading {
+        flex-direction: column;
+        padding: 2rem 1rem;
+    }
+    .heading-description h1 {
+        font-size: 2rem;
+    }
+    .heading-description p {
+        font-size: 1rem;
+        width: 100%;
+    }
+}

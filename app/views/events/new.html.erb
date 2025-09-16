@@ -1,0 +1,47 @@
+<div class="form-container">
+  <nav class="form-nav">
+    <% if current_user.role == "admin" %>
+      <%= link_to "Admin Dashboard", admin_dashboard_page_path, class: "nav-link" %>
+    <% else %>
+      <%= link_to "User Dashboard", user_dashboard_page_path, class: "nav-link" %>
+    <% end %>
+  </nav>
+  <h1 class="form-title">Event Details</h1>
+  <%= form_with(model: @event, local: true, html: { class: "event-form" }) do |form| %>
+    <% if @event.errors.any? %>
+      <div class="error-box">
+        <h2><%= pluralize(@event.errors.count, "error") %> prohibited this event from being saved:</h2>
+        <ul>
+          <% @event.errors.full_messages.each do |msg| %>
+            <li><%= msg %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+    <div class="form-field">
+      <%= form.label :event_name, class: "form-label" %>
+      <%= form.text_field :event_name, class: "form-input" %>
+    </div>
+    <div class="form-field">
+      <%= form.label :date, class: "form-label" %>
+      <%= form.date_field :date, class: "form-input" %>
+    </div>
+    <div class="form-field">
+      <%= form.label :location, class: "form-label" %>
+      <%= form.text_field :location, class: "form-input" %>
+    </div>
+    <div class="form-field">
+      <%= form.label :description, class: "form-label" %>
+      <%= form.text_area :description, rows: 4, class: "form-textarea" %>
+    </div>
+    <div class="form-actions">
+      <% if current_user.role == "admin" %>
+        <%= form.submit "Save", class: "save-btn" %>
+        <%= link_to "Cancel", admin_dashboard_page_path, class: "cancel-btn" %>
+      <% else %>
+        <%= form.submit "Save", class: "save-btn" %>
+        <%= link_to "Cancel", user_dashboard_page_path, class: "cancel-btn" %>
+      <% end %>
+    </div>
+  <% end %>
+</div>

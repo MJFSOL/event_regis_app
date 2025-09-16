@@ -1,0 +1,41 @@
+<div class="dashboard-user">
+  <div class="user-nav">
+    <div class="logo-user">
+      <h1>GoEvent</h1>
+    </div>
+    <div class="logout-user">
+      <%= button_to "Logout", auth_logout_path, method: :delete, class: "btn" %>
+    </div>
+  </div>
+  <div class="dashboard-page">
+    <div class="event-wrapper">
+      <div class="add-events-btn">
+        <%= link_to "Create Events", new_event_path %>
+      </div>
+      <table class="user-events-table">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Date</th>
+            <th>Location</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @events.each do |event|%>
+            <tr>
+              <td><%= event.event_name%></td>
+              <td><%= event.date%></td>
+              <td><%= event.location%></td>
+              <td class="user-events-actions">
+                <%= link_to 'View', event_path(event), class: "action-btn" %>
+                <%= link_to 'Edit', edit_event_path(event), class: "action-btn" %>
+                <%= button_to 'Delete', event_path(event), method: :delete, data: { confirm: 'Are you sure?' }, class: "action-btn action-btn-delete" %>
+              </td>
+            </tr>
+          <%end%>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

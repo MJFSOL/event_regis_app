@@ -1,0 +1,30 @@
+<div class="signin-container">
+  <div class="signin-box">
+    <div class="left-box">
+      <div class="box-heading">
+        <%= link_to "back to home page", guest_landing_page_path %>
+      </div>
+    </div>
+    <div class="right-box">
+      <div class="signin-form">
+        <div class="signin-heading">
+          <h2>Welcome</h2>
+          <p>Please login your account to continue</p>
+        </div>
+        <% if flash[:alert] || flash[:error] %>
+          <div class="errors">
+            <%= flash[:alert] || flash[:error] %>
+          </div>
+        <% end %>
+        <%= form_with url: auth_login_path, method: :post do |f| %>
+          <%= f.label :email %><br>
+          <%= f.text_field :email, class: "signin-input" %><br>
+          <%= f.label :password %><br>
+          <%= f.password_field :password, class: "signin-input" %><br>
+          <%= f.submit "Log In", class:"login-btn" %>
+          <p>Don't have an account? <%= link_to "Sign up", auth_signup_page_path %></p>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

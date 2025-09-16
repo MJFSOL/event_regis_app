@@ -1,0 +1,56 @@
+<div class="admin-registrations-container">
+  <div class="admin-registrations-header">
+    <h1 class="admin-registrations-header-title">Manage All Registrations</h1>
+    <%= link_to "Admin Dashboard", admin_dashboard_page_path, class: "admin-registrations-dashboard-link" %>
+  </div>
+
+  <div class="admin-registrations-toolbar">
+    <%= form_tag admin_registrations_path, method: :get, class: "admin-registrations-search-form" do %>
+      <%= text_field_tag :search, params[:search], placeholder: "Search by attendee or event name", class: "admin-registrations-search-input" %>
+      <%= submit_tag "Search", class: "admin-registrations-search-btn" %>
+    <% end %>
+    <%= link_to "Export to CSV", export_admin_registrations_path(format: :csv), class: "admin-registrations-export-btn" %>
+  </div>
+
+  <div class="admin-registrations-table-card">
+    <%= form_with url: bulk_delete_admin_registrations_path, method: :delete, data: { turbo: false } do %>
+      <table class="admin-registrations-table">
+        <thead>
+          <tr>
+            <th><input type="checkbox" id="select_all"></th>
+            <th>Event</th>
+            <th>Attendee Name</th>
+            <th>Attendee Email</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @registrations.each do |registration| %>
+            <tr>
+              <td><%= check_box_tag 'registration_ids[]', registration.id %></td>
+              <td><%= registration.event.event_name %></td>
+              <td><%= registration.attendee_name %></td>
+              <td><%= registration.attendee_email %></td>
+              <td>
+                <div class="admin-registrations-table-actions">
+                  <%= link_to 'View Event', event_path(registration.event) %>
+                  <%= link_to 'Edit', edit_event_registration_path(registration.event, registration) %>
+                  <%= button_to 'Delete', event_registration_path(registration.event, registration), method: :delete, data: { confirm: 'Are you sure?' } %>
+                </div>
+              </td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+      <%= submit_tag "Delete Selected Registrations", class: "admin-registrations-bulk-delete-btn" %>
+    <% end %>
+  </div>
+</div>
+
+<script>
+  document.getElementById('select_all').addEventListener('change', function() {
+    document.querySelectorAll('input[type="checkbox"][name="registration_ids[]"]').forEach(checkbox => {
+      checkbox.checked = this.checked;
+    });
+  });
+</script>

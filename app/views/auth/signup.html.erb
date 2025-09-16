@@ -1,0 +1,45 @@
+<div class="signup-container">
+  <div class="signup-box">
+    <div class="signup-left-box">
+      <div class="signup-box-heading">
+        <%= link_to "back to home page", guest_landing_page_path %>
+      </div>
+    </div>
+    <div class="signup-right-box">
+      <div class="signup-form">
+        <div class="signup-heading">
+          <h2>Get Started</h2>
+          <p>Please create your account to continue</p>
+        </div>
+        <%= form_with(model: @user, url: auth_create_user_path, local: true) do |form| %>
+          <% if @user.errors.any? %>
+            <div class="errors">
+              <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
+              <ul>
+                <% @user.errors.full_messages.each do |message| %>
+                  <li><%= message %></li>
+                <% end %>
+              </ul>
+            </div>
+          <% end %>
+          <div>
+            <%= form.label :email %><br>
+            <%= form.email_field :email, required: true, class: "signup-input" %>
+          </div>
+          <div>
+            <%= form.label :password %><br>
+            <%= form.password_field :password, required: true, class: "signup-input" %>
+          </div>
+          <div>
+            <%= form.label :password_confirmation %><br>
+            <%= form.password_field :password_confirmation, required: true, class: "signup-input" %>
+          </div>
+          <div>
+            <%= form.submit "Sign Up", class: "signup-btn" %>
+          </div>
+        <% end %>
+        <p>Already have an account? <%= link_to "Sign In", auth_signin_page_path %></p>
+      </div>
+    </div>
+  </div>
+</div>
