@@ -8,9 +8,11 @@ development:
 test:
   adapter: test
 
-  production:
+production:
   adapter: solid_cable
-  url: <%= ENV['DATABASE_URL'] %>
+  connects_to:
+    database:
+      writing: primary
 
 # production:
 #   adapter: solid_cable
